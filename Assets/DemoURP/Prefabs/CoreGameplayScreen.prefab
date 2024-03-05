@@ -262,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd8f6588c48db84881457e88e5986a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PostProcessingBloom: {fileID: 0}
   ShadowsToggleButton: {fileID: 4412624887727986650}
   BloomToggleButton: {fileID: 70201832993942523}
 --- !u!1 &5392885002265425666
@@ -403,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8735196406896817523
 RectTransform:
   m_ObjectHideFlags: 0
@@ -419,9 +420,9 @@ RectTransform:
   - {fileID: 4757910625197925769}
   m_Father: {fileID: 7707384541167318712}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &4364450323612275702

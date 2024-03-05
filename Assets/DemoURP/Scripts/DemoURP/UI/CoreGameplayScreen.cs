@@ -1,5 +1,6 @@
-using System;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 namespace DemoURP.UI
@@ -8,6 +9,7 @@ namespace DemoURP.UI
     {
         #region serialize fields
 
+        [SerializeField] private Volume PostProcessingBloom;
         [SerializeField] private Button ShadowsToggleButton;
         [SerializeField] private Button BloomToggleButton;
 
@@ -16,8 +18,9 @@ namespace DemoURP.UI
         #region fields
 
         private bool _isShadowsEnabled = true;
-        private bool _isBloomEnabled;
+        private bool _isBloomEnabled = true;
         private Renderer[] _renderers;
+        private Bloom _bloom;
 
         #endregion
 
@@ -26,6 +29,7 @@ namespace DemoURP.UI
         private void Awake()
         {
             _renderers = FindObjectsOfType<Renderer>();
+            PostProcessingBloom.profile.TryGet(typeof(Bloom), out _bloom);
         }
 
         private void OnEnable()
@@ -50,15 +54,15 @@ namespace DemoURP.UI
 
             foreach (Renderer item in _renderers)
             {
-                item.shadowCastingMode = _isShadowsEnabled
-                    ? UnityEngine.Rendering.ShadowCastingMode.On
-                    : UnityEngine.Rendering.ShadowCastingMode.Off;
+                item.shadowCastingMode = _isShadowsEnabled ? ShadowCastingMode.On : ShadowCastingMode.Off;
             }
         }
 
         private void OnBloomToggleButtonClicked()
         {
             _isBloomEnabled = !_isBloomEnabled;
+
+            _bloom.active = _isBloomEnabled;
         }
 
         #endregion
